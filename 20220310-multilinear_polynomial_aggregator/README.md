@@ -9,4 +9,4 @@ Simplify multilinear non-constant polynomials with arbitrary number of single ch
 
 Solution(s):
 - polynomial-aggregator-zsh.sh
-	Good old zsh.
+  - Good old zsh.

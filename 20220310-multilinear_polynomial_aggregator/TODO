@@ -1,0 +1,4 @@
+Missing things:
+
+- Better ordering would be from 1-variable to n-variable, and alphabetically within those groups.
+	- e.g x+y+ab+bc+xyz

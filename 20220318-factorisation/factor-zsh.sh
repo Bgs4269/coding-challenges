@@ -13,11 +13,9 @@ typeset -A factors
       {
         i=${div}
         (( factors[${factor}]+=1 ))
-        echo "\t ${factor}:$factors[${factor}]"
       } || {
         break
       }
-    #echo "################# div=${div}"
     [[ ${div} == "1." ]] && break
   done
   [[ ${i} == "1." ]] && break

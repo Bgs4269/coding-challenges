@@ -1,0 +1,2 @@
+#!/bin/zsh
+gcc -Wall -g factor.c -o factor -lm

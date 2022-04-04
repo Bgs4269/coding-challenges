@@ -6,34 +6,14 @@
 
 #define DEBUG = 1
 
+/*#ifdef __SIZEOF_INT128__
+  typedef unsigned __int128	primeSize;
+#elif
+  typedef	uint64_t	primeSize;
+#endif*/
+
 typedef	uint64_t	primeSize;
 int			factCnt=0;
-
-
-/*
-void debug(const char *format)
-{
-#ifdef DEBUG
-  fprintf(stderr, format);
-#endif
-}
-*/
-
-
-/*
-int isPrime(primeSize checkMe)
-{
-  primeSize	iter;
-  if(checkMe%2 == 0) return(0);
-
-  for(iter=3; iter<sqrt(checkMe); iter+=2)
-    {
-      if(checkMe%iter == 0) return(0);
-    }
-
-return(1);
-}
-*/
 
 
 /*

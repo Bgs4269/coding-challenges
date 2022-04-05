@@ -1,2 +1,0 @@
-#!/bin/zsh
-gcc -Wall -O3 factor.c -o factor -lm && strip factor

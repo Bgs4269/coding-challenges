@@ -1,10 +1,45 @@
+/*
+*
+* This is a mildly optimised C code for integer factorisation.
+* In its current form it hadnles 64-bit integers in a fraction of a second.
+* e.g. finding the primes for 718061908054592475 on my laptop took less than 1ms.
+*
+* Note 1: Why C?
+* In this challenge, most went with Python, which is a good language, but as any
+* scripting language has its weak spots. Especially in such operations.
+* I thought this would be a good demo on how C is different and how it can be more
+* efficient.
+*
+* Note 2: Why this way?
+* I made a few choices that were more about showing the difference over optimal
+* solution. e.g. I chose to always allocate one block of 64-bit pairs in the array,
+* even though a generous for 64-bit BUFSIZ allocation would have made it easier and
+* today we can freely "waste" that amount of memory.
+*
+* Note 3: 64-bit?
+* With some tweaks (mostly around formatting), this can be tweaked to use unsigned __int128
+* for primeSize, but I did not bother to go through the code again. Past 128 bits, 
+* dedicated arithmetic functions or libraries are needed.
+*
+* Note 4: Further improvements?
+* I see a few options to improve for larger integers and faster execution:
+* - Multithreading, with each thread handling a batch of odds, and toFactor is only decreased
+*   when results are in. A fixed size array or shared memory could be used for IPC.
+* - CUDA or opencl for utilise GPU cores.
+* - As we only need a small set of operations, custom build them for arbitrary sized types.
+* - Use an arbitrary precision library like libgcrypt, openssl, bigz etc.
+*
+*/
+
+
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>
 #include <math.h>
 
-#define DEBUG = 1
+//#define DEBUG = 1
 
 /*#ifdef __SIZEOF_INT128__
   typedef unsigned __int128	primeSize;
